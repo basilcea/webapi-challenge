@@ -16,9 +16,11 @@ Go code!
 
 const express = require('express');
 const router = require('./routes');
+const cors = require("cors");
 const Port = process.env.port || 2020
 
 const server = express();
+server.use(cors());
 
 server.use(express.json())
 server.use(express.urlencoded({extended:true}))

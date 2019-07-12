@@ -10,6 +10,17 @@ const status = (res, data, status) => {
         status(res ,data, 200)
     }
     catch(err){
+        status(res ,'Cannot Get Project', 500)
+    }
+  }
+
+
+  const GetProjects = async( req , res) => {
+    try{
+        const data = await Projects.get()
+        status(res ,data, 200)
+    }
+    catch(err){
         status(res ,'Cannot Get Projects', 500)
     }
   }
@@ -60,5 +71,5 @@ const status = (res, data, status) => {
   }
 
   module.exports = ({
-      GetProject,GetProjectsActions,AddProject,UpdateProject,DeleteProject
+      GetProject,GetProjectsActions,AddProject,UpdateProject,DeleteProject, GetProjects
   })
