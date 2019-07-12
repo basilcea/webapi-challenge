@@ -8,7 +8,7 @@
     "url": "git+https://github.com/LambdaSchool/Sprint-Challenge-Node-Express.git"
   },
   "scripts": {
-    "server": "nodemon index.js"
+    "start": "nodemon index.js"
   },
   "keywords": [
     "webapi",

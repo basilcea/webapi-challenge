@@ -16,13 +16,11 @@ Go code!
 
 const Express = require('express');
 const Router = require('./routes');
-const Logger = require('logger')
 const Port = process.env.port || 2020
 
 const server = Express();
 
 server.use(Express.json())
-server.use(Logger)
 server.use(Express.urlencoded({extended:true}))
 server.use('api/projects', Router)
 

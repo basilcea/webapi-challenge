@@ -67,7 +67,8 @@ const validateActionId = async (req, res, next) => {
   };
   
   module.exports = ({
-    validatePost,
-    validateUser,
-    validateUserId
+    validateProjectId,
+    validateActionId,
+    validateProject,
+    validateAction
   });
