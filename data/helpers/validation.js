@@ -70,5 +70,5 @@ const validateActionId = async (req, res, next) => {
     validateProjectId,
     validateActionId,
     validateProject,
-    validateAction
+    validateAction,
   });
