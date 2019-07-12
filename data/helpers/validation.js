@@ -20,7 +20,8 @@ const validateActionId = async (req, res, next) => {
     const { actionId } = req.params;
     try {
       const data = await Action.get(actionId);
-      if (!data) {
+      
+      if (!data.length) {
         return res.status(400).json({ message: "invalid user id" });
       }
       req.user = data;

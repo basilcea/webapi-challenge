@@ -6,7 +6,7 @@ const status = (res, data, status) => {
   const GetAction = async( req , res) => {
     const {actionId} = req.params
     try{
-        const data = Actions.get(actionId)
+        const data = await Actions.get(actionId)
         status(res ,data, 200)
     }
     catch(err){
@@ -18,7 +18,7 @@ const status = (res, data, status) => {
     const {description, notes} = req.body
     const {id} = req.params
     try{
-        const data = Projects.insert({description,notes, project_id:id})
+        const data = await Actions.insert({description,notes, project_id:id})
         status(res ,data , 200)
     }
     catch(err){
@@ -31,7 +31,7 @@ const UpdateAction = async(req, res) => {
     const {description , notes} = req.body
 
     try{
-      const data = Projects.update(actionId ,{description , notes})
+      const data = await Actions.update(actionId ,{description , notes})
       status(res ,data , 200)
   }
   catch(err){
@@ -42,7 +42,7 @@ const UpdateAction = async(req, res) => {
 const DeleteAction = async(req, res) => {
     const {actionId} = req.params;
     try{
-        await Projects.delete(actionId)
+        await Actions.remove(actionId)
         status(res, "Action Deleted", 200)
     }
     catch(err){

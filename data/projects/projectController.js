@@ -6,7 +6,7 @@ const status = (res, data, status) => {
   const GetProject = async( req , res) => {
     const {id} = req.params
     try{
-        const data = Projects.get(id)
+        const data = await Projects.get(id)
         status(res ,data, 200)
     }
     catch(err){
@@ -16,7 +16,7 @@ const status = (res, data, status) => {
   const GetProjectsActions = async(req , res) => {
       const {id} = req.params
       try{
-          const data = Projects.getProjectActions(id)
+          const data = await Projects.getProjectActions(id)
           data.length === 0? status(res, 'No Actions for this project', 404):status(res, data, 200)
       }
       catch(err){
@@ -27,7 +27,7 @@ const status = (res, data, status) => {
   const AddProject = async(req ,res) => {
       const {name , description} = req.body
       try{
-          const data = Projects.insert({name , description})
+          const data = await Projects.insert({name , description})
           status(res ,data , 200)
       }
       catch(err){
@@ -40,7 +40,7 @@ const status = (res, data, status) => {
       const {name , description} = req.body
 
       try{
-        const data = Projects.update(id ,{name , description})
+        const data = await Projects.update(id ,{name , description})
         status(res ,data , 200)
     }
     catch(err){
@@ -51,7 +51,7 @@ const status = (res, data, status) => {
   const DeleteProject = async(req, res) => {
       const {id} = req.params;
       try{
-          await Projects.delete(id)
+          await Projects.remove(id)
           status(res, "Project Deleted", 200)
       }
       catch(err){
