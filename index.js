@@ -14,15 +14,15 @@ Go code!
 */
 
 
-const Express = require('express');
-const Router = require('./routes');
+const express = require('express');
+const router = require('./routes');
 const Port = process.env.port || 2020
 
-const server = Express();
+const server = express();
 
-server.use(Express.json())
-server.use(Express.urlencoded({extended:true}))
-server.use('api/projects', Router)
+server.use(express.json())
+server.use(express.urlencoded({extended:true}))
+server.use('/api/projects', router)
 
 server.listen(Port , () => {
     console.log('Listening into the future -2020')

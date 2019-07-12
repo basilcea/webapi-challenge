@@ -1,11 +1,12 @@
 const ProjectsRoutes = require('./data/projects/projectRoutes')
 const ActionsRoutes = require('./data/actions/actionsRoutes')
-const Express = require('express')
+const express = require('express')
+const {validateProjectId} = require('./data/helpers/validation')
 
 
-const router = Express.Router()
+const router = express.Router()
 
-router.use('/:id/actions' ,ActionsRoutes)
+router.use('/:id/actions' , validateProjectId ,ActionsRoutes)
 router.use('/',ProjectsRoutes)
 
-module.exports = {router}
+module.exports = router

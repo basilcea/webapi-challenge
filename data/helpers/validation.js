@@ -17,9 +17,9 @@ const validateProjectId = async (req, res, next) => {
 
 
 const validateActionId = async (req, res, next) => {
-    const { id } = req.params;
+    const { actionId } = req.params;
     try {
-      const data = await Action.get(id);
+      const data = await Action.get(actionId);
       if (!data) {
         return res.status(400).json({ message: "invalid user id" });
       }
@@ -49,7 +49,6 @@ const validateActionId = async (req, res, next) => {
   };
   
   const validateAction = async (req, res, next) => {
-    const { text } = req.body;
     try {
       if (!req.body) {
         return res.status(400).json({ message: "missing post data" });

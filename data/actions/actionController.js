@@ -26,7 +26,7 @@ const status = (res, data, status) => {
     }
 }
 
-const UpdateProject = async(req, res) => {
+const UpdateAction = async(req, res) => {
     const {actionId} = req.params;
     const {description , notes} = req.body
 
@@ -39,7 +39,7 @@ const UpdateProject = async(req, res) => {
   }
 }
 
-const DeleteProject = async(req, res) => {
+const DeleteAction = async(req, res) => {
     const {actionId} = req.params;
     try{
         await Projects.delete(actionId)
@@ -49,3 +49,7 @@ const DeleteProject = async(req, res) => {
         status(res , 'Cannot Delete Action' , 500)
     }
 }
+
+module.exports = ({
+    GetAction, AddAction ,UpdateAction,DeleteAction
+})
