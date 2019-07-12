@@ -8,7 +8,6 @@ const validateProjectId = async (req, res, next) => {
       if (!data) {
         return res.status(400).json({ message: "invalid user id" });
       }
-      req.user = data;
       next();
     } catch (err) {
       return res.status(500).json(err.toString());
@@ -20,11 +19,9 @@ const validateActionId = async (req, res, next) => {
     const { actionId } = req.params;
     try {
       const data = await Action.get(actionId);
-      
-      if (!data.length) {
+      if (!data) {
         return res.status(400).json({ message: "invalid user id" });
       }
-      req.user = data;
       next();
     } catch (err) {
       return res.status(500).json(err.toString());
