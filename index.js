@@ -12,3 +12,21 @@ I need this code, just don't know where, perhaps should make some middleware, do
 
 Go code!
 */
+
+
+const express = require('express');
+const router = require('./routes');
+const cors = require("cors");
+const Port = process.env.port || 2020
+
+const server = express();
+server.use(cors());
+
+server.use(express.json())
+server.use(express.urlencoded({extended:true}))
+server.use('/api/projects', router)
+
+server.listen(Port , () => {
+    console.log('Listening into the future -2020')
+})
+
